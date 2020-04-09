@@ -11,18 +11,7 @@
     <script>
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
-<script type="text/javascript">
-  function onSceneLoaded() {
-    const raycaster = document.querySelector('[ar-raycaster]');
-    const cursor = document.querySelector('#cursor');
-    raycaster.addEventListener('raycaster-intersection', (event) => {
-      cursor.setAttribute('position', event.detail.intersections[0].point);
-    });
-  }
 
-  const scene = document.querySelector('a-scene');
-  scene.addEventListener('loaded', onSceneLoaded);
-</script>
 </head>
 
 <body style='margin: 0; overflow: hidden;'>
@@ -38,6 +27,18 @@
 
 <a-camera ar-raycaster raycaster cursor="fuse:false"></a-camera>
         <a-ring id="cursor" radius-inner="0.1" radius-outer="0.2" color="teal" position="0 -0.8 -5" rotation="-90 0 0"></a-ring>
-        
+
+        <script type="text/javascript">
+  function onSceneLoaded() {
+    const raycaster = document.querySelector('[ar-raycaster]');
+    const cursor = document.querySelector('#cursor');
+    raycaster.addEventListener('raycaster-intersection', (event) => {
+      cursor.setAttribute('position', event.detail.intersections[0].point);
+    });
+  }
+
+  const scene = document.querySelector('a-scene');
+  scene.addEventListener('loaded', onSceneLoaded);
+</script>
 </a-scene>
 </body>
